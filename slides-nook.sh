@@ -46,6 +46,11 @@ prepare_terminal ()
 # |  _|| | | (_| | | | | | |  __/\__ \
 # |_|  |_|  \__,_|_| |_| |_|\___||___/
 ##############################################################################
+title ()
+{
+    startframe "title"
+    magic_shell_art
+}
 
 why ()
 {
@@ -98,7 +103,7 @@ thanks ()
     figlet -f big Fragen\?
 }
 
-export TALK_FRAMES="why reasons unix streams thanks"
+export TALK_FRAMES="title why reasons unix streams thanks"
 
 ##############################################################################
 #	 _____      _                 
