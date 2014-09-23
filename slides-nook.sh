@@ -118,7 +118,7 @@ fun ()
     clear
     paste <(change_to_color cyan; figlet -f mono9 Fun; reset_color) \
           <(figlet Fun)\
-          | sed -e "s%[/_'\\|]%\x1b[37;1m&\x1b[0m%g"
+          | sed -e "s%[/_'\\|]%\x1b[34m&\x1b[0m%g"
     for i in {1..108}; do printf '\x08'; done
     printf '\x1b[31m'
     figlet -f script '   Fun'
