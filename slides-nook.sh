@@ -120,10 +120,11 @@ fun ()
     printf '\x1b[0m'
 }
 
-color_magic ()
+magic_shell_art ()
 {
-    sed -e 's/\*/\x1b[39m*\x1b[0m/g'\
-        -e 's%[(_/|)]%\x1b[35m&\x1b[0m%g'\
+    sed -e 's/\*/\x1b[34m*\x1b[0m/g'\
         -e "s/[.:;'\`]/\x1b[37m&\x1b[0m/g"\
+        -e 's/|\?___|\?/\x1b[35;05m& \x1b[0m/g'\
+        -e 's%_\{1,2\}[^_]\|[(/)]%\x1b[35m&\x1b[0m%g'\
         magic-shell.txt
 }
