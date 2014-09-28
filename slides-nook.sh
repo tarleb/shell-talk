@@ -31,13 +31,39 @@ prepare_terminal ()
     # use emacs keybindings for once
     bindkey -e
 
-    # Set font color to white
-    echo '\x1b]10;11\x07'
-    # Set background to black
-    echo '\x1b]11;0\x07'
+    # # Set font color to white
+    # echo '\x1b]10;11\x07'
+    # # Set background to black
+    # echo '\x1b]11;0\x07'
 
     clear
 }
+
+define_newframe ()
+{
+    echo "$1"
+    framename="$1"
+    frametitle="$2"
+    shift; shift;
+    # read framecontent
+    framecontent="$@"
+    "$framename" ()
+    {
+        startframe "$framename"
+        frametitle "$frametitle"
+        echo "$framecontent"
+    }
+}
+newframe ()
+{
+}
+    
+
+define_newframe 'testing' 'Moin' $(
+    listitem Some stupid text;
+    listitem More stupid text;
+    )
+
 
 ##############################################################################
 #  _____                              
@@ -128,7 +154,7 @@ fun ()
 magic_shell_art ()
 {
     sed -e 's/\*/\x1b[34m*\x1b[0m/g'\
-        -e "s/[.:;'\`]/\x1b[37m&\x1b[0m/g"\
+        -e "s/[.:;'\`]/\x1b[30m&\x1b[0m/g"\
         -e 's/|\?___|\?/\x1b[35;05m& \x1b[0m/g'\
         -e 's%_\{1,2\}[^_]\|[(/)]%\x1b[35m&\x1b[0m%g'\
         magic-shell.txt

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd ~/projects/chaotikum/shell-talk
+xrdb -query > .Xresources.orig
+xrdb -merge .Xresources
+urxvt -fade 0 -cr '#d33682' -e './start-tmux'
+xrdb -load .Xresources.orig
