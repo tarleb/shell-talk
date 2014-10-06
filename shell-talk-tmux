@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+TALK_DIR="$(dirname $0)"
+
+. "${TALK_DIR}/shell-talk.sh"
+. "${TALK_DIR}/slides-nook.sh"
+set_terminal_font "$1"
+
+cd "$TALK_DIR"
+tmux new-session -s shell-magic -dn presentation
+tmux new-window  -t shell-magic:1 -n control
+
+tmux send-keys -t shell-magic:0 "cd ${TALK_DIR}" C-m
+tmux send-keys -t shell-magic:0 "source shell-talk.sh" C-m
+tmux send-keys -t shell-magic:0 "source slides-nook.sh" C-m
+tmux send-keys -t shell-magic:0 "source keyboard.sh" C-m
+tmux send-keys -t shell-magic:0 "prepare_terminal" C-m
+
+tmux send-keys -t shell-magic:1 "cd ${TALK_DIR}" C-m
+
+tmux set-option -t shell-magic status 0
+
+tmux select-window -t shell-magic:0
+tmux attach-session -t shell-magic

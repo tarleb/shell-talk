@@ -19,9 +19,11 @@ FONT_SIZE=30
 
 set_terminal_font ()
 {
+    local font_size=${1:-$FONT_SIZE}
+    local font=${2:-$FONT}
     # Set the fonts for this terminal
-    echo "\033]710;xft: $FONT:pixelsize=${FONT_SIZE}\033\\"
-    echo "\033]711;xft: $FONT:pixelsize=${FONT_SIZE}:bold\033\\"
+    echo "\033]710;xft: ${font}:pixelsize=${font_size}\033\\"
+    echo "\033]711;xft: ${font}:pixelsize=${font_size}:bold\033\\"
 }
 
 set_spartanic_prompt ()
@@ -107,26 +109,6 @@ thanks ()
 }
 
 export TALK_FRAMES="title why reasons unix streams thanks"
-
-##############################################################################
-#        _____      _
-#	| ____|_  _| |_ _ __ __ _ ___
-#	|  _| \ \/ / __| '__/ _` / __|
-#	| |___ >  <| |_| | | (_| \__ \
-#	|_____/_/\_\\__|_|  \__,_|___/
-##############################################################################
-
-fun ()
-{
-    clear
-    paste <(change_to_color cyan; figlet -f mono9 Fun; reset_color) \
-          <(figlet Fun)\
-          | sed -e "s%[/_'\\|]%\x1b[34m&\x1b[0m%g"
-    for i in {1..108}; do printf '\x08'; done
-    printf '\x1b[31m'
-    figlet -f script '   Fun'
-    printf '\x1b[0m'
-}
 
 magic_shell_art ()
 {
