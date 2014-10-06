@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+TALK_DIR="$(dirname $0)"
+
+xrdb -query > "${TALK_DIR}/.Xresources.orig"
+xrdb -merge "${TALK_DIR}/.Xresources"
+urxvt -fade 0 -cr '#d33682' -e "${TALK_DIR}/shell-talk-tmux" "$@"
+xrdb -merge "${TALK_DIR}/.Xresources.orig"
