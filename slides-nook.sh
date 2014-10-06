@@ -15,33 +15,36 @@
 # CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 FONT="Droid Sans Mono"
-FONT_SIZE=40
+FONT_SIZE=30
 
-# Setup terminal with the desired fonts and colors
-prepare_terminal ()
+set_terminal_font ()
 {
     # Set the fonts for this terminal
-    echo "\033]710;xft: $FONT:pixelsize=$FONT_SIZE\033\\"
-    echo "\033]711;xft: $FONT:pixelsize=$FONT_SIZE:bold\033\\"
+    echo "\033]710;xft: $FONT:pixelsize=${FONT_SIZE}\033\\"
+    echo "\033]711;xft: $FONT:pixelsize=${FONT_SIZE}:bold\033\\"
+}
 
+set_spartanic_prompt ()
+{
     # Reset precommand used by zsh
     precmd () true
     # Set the prompt to something simple
     PROMPT="%{$fg[magenta]%}%#%{$reset_color%} "
+}
+
+# Setup terminal with the desired fonts and colors
+prepare_terminal ()
+{
+    set_terminal_font
+    set_spartanic_prompt
     # use emacs keybindings for once
     bindkey -e
-
-    # Set font color to white
-    echo '\x1b]10;11\x07'
-    # Set background to black
-    echo '\x1b]11;0\x07'
-
     clear
 }
 
 ##############################################################################
-#  _____                              
-# |  ___| __ __ _ _ __ ___   ___  ___ 
+#  _____
+# |  ___| __ __ _ _ __ ___   ___  ___
 # | |_ | '__/ _` | '_ ` _ \ / _ \/ __|
 # |  _|| | | (_| | | | | | |  __/\__ \
 # |_|  |_|  \__,_|_| |_| |_|\___||___/
@@ -106,8 +109,8 @@ thanks ()
 export TALK_FRAMES="title why reasons unix streams thanks"
 
 ##############################################################################
-#	 _____      _                 
-#	| ____|_  _| |_ _ __ __ _ ___ 
+#        _____      _
+#	| ____|_  _| |_ _ __ __ _ ___
 #	|  _| \ \/ / __| '__/ _` / __|
 #	| |___ >  <| |_| | | (_| \__ \
 #	|_____/_/\_\\__|_|  \__,_|___/
@@ -128,7 +131,7 @@ fun ()
 magic_shell_art ()
 {
     sed -e 's/\*/\x1b[34m*\x1b[0m/g'\
-        -e "s/[.:;'\`]/\x1b[37m&\x1b[0m/g"\
+        -e "s/[.:;'\`]/\x1b[30m&\x1b[0m/g"\
         -e 's/|\?___|\?/\x1b[35;05m& \x1b[0m/g'\
         -e 's%_\{1,2\}[^_]\|[(/)]%\x1b[35m&\x1b[0m%g'\
         magic-shell.txt
