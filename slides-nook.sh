@@ -19,8 +19,9 @@ FONT_SIZE=30
 
 set_terminal_font ()
 {
-    local font_size=${1:-$FONT_SIZE}
-    local font=${2:-$FONT}
+    local font_size=${1:-"$FONT_SIZE"}
+    local font=${2:-"${FONT}"}
+    echo "${font}" > /tmp/test
     # Set the fonts for this terminal
     echo "\033]710;xft: ${font}:pixelsize=${font_size}\033\\"
     echo "\033]711;xft: ${font}:pixelsize=${font_size}:bold\033\\"
@@ -35,9 +36,8 @@ set_spartanic_prompt ()
 }
 
 # Setup terminal with the desired fonts and colors
-prepare_terminal ()
+prepare_shell ()
 {
-    set_terminal_font
     set_spartanic_prompt
     # use emacs keybindings for once
     bindkey -e

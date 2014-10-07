@@ -16,7 +16,7 @@ tmux send-keys -t shell-magic:0 "cd ${TALK_DIR}" C-m
 tmux send-keys -t shell-magic:0 "source shell-talk.sh" C-m
 tmux send-keys -t shell-magic:0 "source slides-nook.sh" C-m
 tmux send-keys -t shell-magic:0 "source keyboard.sh" C-m
-tmux send-keys -t shell-magic:0 "prepare_terminal" C-m
+tmux send-keys -t shell-magic:0 "prepare_shell" C-m
 
 tmux send-keys -t shell-magic:1 "cd ${TALK_DIR}" C-m
 
