@@ -17,14 +17,32 @@
 FONT="Droid Sans Mono"
 FONT_SIZE=30
 
+set_optimal_font_size ()
+{
+    local font="${1:-"${FONT}"}"
+    readonly optimal_lines=25
+    local font_size=16
+    sleep 0.5
+    while [ "$(tput lines)" -gt "${optimal_lines}" ]; do
+        font_size=$(($font_size + 2))
+        echo "\033]710;xft: ${font}:pixelsize=${font_size}\033\\"
+        echo "\033]711;xft: ${font}:pixelsize=${font_size}:bold\033\\"
+        sleep 0.5
+    done
+    echo $font_size;
+}
+
 set_terminal_font ()
 {
-    local font_size=${1:-"$FONT_SIZE"}
-    local font=${2:-"${FONT}"}
-    echo "${font}" > /tmp/test
-    # Set the fonts for this terminal
-    echo "\033]710;xft: ${font}:pixelsize=${font_size}\033\\"
-    echo "\033]711;xft: ${font}:pixelsize=${font_size}:bold\033\\"
+    local font_size="${1}"
+    local font="${2:-"${FONT}"}"
+    if [ -z "${font_size}" ]; then
+        set_optimal_font_size "$font"
+    else
+        # Set the fonts for this terminal
+        echo "\033]710;xft: ${font}:pixelsize=${font_size}\033\\"
+        echo "\033]711;xft: ${font}:pixelsize=${font_size}:bold\033\\"
+    fi
 }
 
 set_spartanic_prompt ()

@@ -6,7 +6,7 @@ TALK_DIR="$(dirname $0)"
 
 . "${TALK_DIR}/shell-talk.sh"
 . "${TALK_DIR}/slides-nook.sh"
-set_terminal_font "$1"
+set_terminal_font "$@"
 
 cd "$TALK_DIR"
 tmux new-session -s shell-magic -dn presentation
