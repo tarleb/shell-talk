@@ -40,6 +40,28 @@ frametitle ()
     printf "\n"
 }
 
+append_talk_frame ()
+{
+    TALK_FRAMES="$TALK_FRAMES $1"
+}
+
+# Define a new static frame
+newframe ()
+{
+    local framename="$1"
+    local frametitle="$2"
+    shift; shift
+    # get content
+    framecontent="$@"
+    eval "\"$framename\" ()
+    {
+        startframe \"$framename\"
+        frametitle \"$frametitle\"
+        echo \"$framecontent\"
+    }"
+    append_talk_frame "$framename"
+}
+
 # Echo a single item within a list
 listitem ()
 {

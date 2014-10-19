@@ -107,14 +107,11 @@ unix()
         listitem Text ist das universelle Interface
 }
 
-streams ()
-{
-    startframe "streams"
-    frametitle Streams
+newframe "streams" "Streams" "$(
     listitem "0 Eingabe        stdin"
     listitem "1 Ausgabe        stdout"
     listitem "2 Fehlerausgabe  stderr"
-}
+)"
 
 # Echo some thanks or the like at the end of the talk
 thanks ()
