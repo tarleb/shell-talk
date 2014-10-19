@@ -74,38 +74,29 @@ title ()
     startframe "title"
     magic_shell_art
 }
+append_talk_frame "title"
 
-why ()
-{
-    startframe "why"
-    frametitle Warum\?
+newframe "why" Warum\? "$(
     listitem Kryptisch
     listitem Fordert den Nutzer
     listitem Steilere Lernkurve als GUI
-}
+)"
 
 
-reasons ()
-{
-    startframe "reasons"
-    frametitle Vorteile
+newframe "reasons" Vorteile "$(
     listitem Funktioniert fast immer
     listitem Benutzbar über langsame Netzwerke
     listitem Gut dokumentiert
     listitem Kombinieren verschiedener Programme ist einfach
-}
+)"
 
-unix()
-{
-    startframe "unix"
-    frametitle Philosophie
+newframe "unix" "Philosophie" "$(
     listitem Kleine Programme
     listitem Ein Program, eine Aufgabe
     listitem Kombinierbarkeit von Programmen
-    anykey
     with_font_color yellow \
         listitem Text ist das universelle Interface
-}
+)"
 
 newframe "streams" "Streams" "$(
     listitem "0 Eingabe        stdin"
