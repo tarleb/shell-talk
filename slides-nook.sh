@@ -82,7 +82,6 @@ newframe "why" Warum\? "$(
     listitem Steilere Lernkurve als GUI
 )"
 
-
 newframe "reasons" Vorteile "$(
     listitem Funktioniert fast immer
     listitem Benutzbar über langsame Netzwerke
@@ -98,11 +97,25 @@ newframe "unix" "Philosophie" "$(
         listitem Text ist das universelle Interface
 )"
 
+newframe "customization" "Benutzung" "$(
+    listitem "Prinzipien"
+    listitem "Mögliche Befehle"
+    listitem "Umgebung an Benutzer anpassen"
+    listitem "Nicht nachgeben"
+)"
+
 newframe "streams" "Streams" "$(
     listitem "0 Eingabe        stdin"
     listitem "1 Ausgabe        stdout"
     listitem "2 Fehlerausgabe  stderr"
 )"
+
+newframe "scripting" "Automatisierung" "$(
+    listitem "Shell ist eine Programmiersprache"
+    listitem "Repetitive Aufgaben gut erledigbar"
+    listitem "Skripte laufen auf vielen Systemen"
+)"
+
 
 # Echo some thanks or the like at the end of the talk
 thanks ()
@@ -111,10 +124,12 @@ thanks ()
     figlet -f big Das war\'s
     sleep 3
     clear
-    figlet -f big Fragen\?
+    echo "\n\n\n\n\n"
+    cowsay -f moose Fragen\?
+    echo "\n\n\n\n\n"
 }
 
-export TALK_FRAMES="title why reasons unix streams thanks"
+export TALK_FRAMES="title why reasons unix customization streams scripting thanks"
 
 magic_shell_art ()
 {
