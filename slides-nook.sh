@@ -98,10 +98,24 @@ newframe "unix" "Philosophie" "$(
 )"
 
 newframe "customization" "Benutzung" "$(
-    listitem "Prinzipien"
-    listitem "Mögliche Befehle"
-    listitem "Umgebung an Benutzer anpassen"
-    listitem "Nicht nachgeben"
+    listitem Prinzipien
+    listitem Mögliche Befehle
+    listitem Umgebung an Benutzer anpassen
+    listitem Nicht nachgeben
+)"
+
+newframe "comfy" "Mach's dir bequem" "$(
+    listitem Tastenkürzel
+    listitem Aliase
+    listitem Erscheinungsbild
+    listitem Werkzeuge
+    listitem Skripte
+)"
+
+newframe "scripting" "Skripten" "$(
+    listitem Shell ist eine Programmiersprache
+    listitem Repetitive Aufgaben gut automatisierbar
+    listitem Skripte laufen auf vielen Systemen
 )"
 
 newframe "streams" "Streams" "$(
@@ -109,13 +123,6 @@ newframe "streams" "Streams" "$(
     listitem "1 Ausgabe        stdout"
     listitem "2 Fehlerausgabe  stderr"
 )"
-
-newframe "scripting" "Automatisierung" "$(
-    listitem "Shell ist eine Programmiersprache"
-    listitem "Repetitive Aufgaben gut erledigbar"
-    listitem "Skripte laufen auf vielen Systemen"
-)"
-
 
 # Echo some thanks or the like at the end of the talk
 thanks ()
@@ -129,7 +136,7 @@ thanks ()
     echo "\n\n\n\n\n"
 }
 
-export TALK_FRAMES="title why reasons unix customization streams scripting thanks"
+export TALK_FRAMES="title why reasons unix customization comfy scripting streams thanks"
 
 magic_shell_art ()
 {
