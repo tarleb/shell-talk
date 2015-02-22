@@ -118,17 +118,17 @@ talk_frames ()
 
 next_frame ()
 {
-    talk_frames | grep -A1 "$CURRENT_FRAME" | tail -n1
+    talk_frames | grep -A1 "^$CURRENT_FRAME$" | tail -n1
 }
 
 prev_frame ()
 {
-    talk_frames | grep -B1 "$CURRENT_FRAME" | head -n1
+    talk_frames | grep -B1 "^${CURRENT_FRAME}$" | head -n1
 }
 
 cur_frame ()
 {
-    talk_frames | grep "$CURRENT_FRAME"
+    talk_frames | grep "^${CURRENT_FRAME}$"
 }
 
 start_talk ()
