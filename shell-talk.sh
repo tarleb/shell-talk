@@ -113,7 +113,7 @@ reset_color ()
 
 talk_frames ()
 {
-    echo "$TALK_FRAMES" | tr ' ' "\n"
+    echo "$TALK_FRAMES" | tr ' ' "\n" | grep -v '^[ 	]*$'
 }
 
 next_frame ()
