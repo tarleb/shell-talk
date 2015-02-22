@@ -133,7 +133,8 @@ cur_frame ()
 
 start_talk ()
 {
-    eval $(talk_frames | head -n1)
+    CURRENT_FRAME=$(talk_frames | head -n1)
+    eval "$CURRENT_FRAME"
 }
 
 next ()
