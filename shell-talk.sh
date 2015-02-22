@@ -58,6 +58,7 @@ newframe ()
         startframe \"$framename\"
         frametitle \"$frametitle\"
         echo \"$framecontent\"
+        printf \"\n\"
     }"
     append_talk_frame "$framename"
 }
